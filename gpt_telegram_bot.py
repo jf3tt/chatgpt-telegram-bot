@@ -1,7 +1,6 @@
 import openai
 import os
 import logging
-from io import BytesIO
 
 from telegram import Update
 from telegram.ext import filters, ApplicationBuilder, ContextTypes, MessageHandler
@@ -41,9 +40,6 @@ async def gpt_response(update: Update, context: ContextTypes.DEFAULT_TYPE):
     append_history(response, messages_list, "assistant")
 
     await context.bot.send_message(chat_id=update.effective_chat.id, text=response)
-
-    # await context.bot.send_audio(chat_id=update.effective_chat.id, audio=audio_response(response))
-
 
 async def audio_recognition(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     file_id = update.message.voice.file_id
