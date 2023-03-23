@@ -27,4 +27,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: moshedayan/chatgpt-telegram-bot:${{ github.ref }}
+        tags: moshedayan/chatgpt-telegram-bot:latest
