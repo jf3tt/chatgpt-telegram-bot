@@ -24,15 +24,23 @@ def append_history(question, messages_list, role):
         messages_list.append({"role": "assistant", "content": question})
     return messages_list
 
+
 async def gpt_response(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    thinking = await context.bot.send_message(
+        chat_id=update.effective_chat.id, text="🤔"
+    )
+
     append_history(update.message.text, messages_list, "user")
 
     completion = openai.ChatCompletion.create(model="gpt-4", messages=messages_list)
     response = completion.choices[0].message["content"]
 
     append_history(response, messages_list, "assistant")
-
+    await context.bot.deleteMessage(
+        message_id=thinking.message_id, chat_id=update.message.chat_id
+    )
     await context.bot.send_message(chat_id=update.effective_chat.id, text=response)
+
 
 async def audio_recognition(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     file_id = update.message.voice.file_id
