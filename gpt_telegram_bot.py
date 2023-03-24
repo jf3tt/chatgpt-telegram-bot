@@ -24,13 +24,6 @@ def append_history(question, messages_list, role):
         messages_list.append({"role": "assistant", "content": question})
     return messages_list
 
-
-def audio_response(text):
-    tts = gTTS(text, lang="en", slow=False)
-    # tts.save('message.mp3')
-    return tts
-
-
 async def gpt_response(update: Update, context: ContextTypes.DEFAULT_TYPE):
     append_history(update.message.text, messages_list, "user")
 
