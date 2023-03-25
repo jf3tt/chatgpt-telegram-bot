@@ -6,4 +6,4 @@ WORKDIR /app
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT [ "python3", "gpt_telegram_bot.py" ]
+ENTRYPOINT [ "python3", "bot/gpt_telegram_bot.py" ]
