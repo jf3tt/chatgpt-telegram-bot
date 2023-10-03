@@ -18,6 +18,7 @@ logging.basicConfig(
 
 telegram_token = os.environ["TELEGRAM_TOKEN"]
 openai.api_key = os.environ["OPENAI_TOKEN"]
+openai_version = os.environ["OPENAI_VERSION"]
 
 messages_list = []
 
@@ -58,7 +59,7 @@ async def process_audio_message(update: Update, context: ContextTypes.DEFAULT_TY
 
 
 def generate_gpt_response():
-    completion = openai.ChatCompletion.create(model="gpt-4", messages=messages_list)
+    completion = openai.ChatCompletion.create(model=openai_version, messages=messages_list)
     return completion.choices[0].message["content"]
 
 

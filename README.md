@@ -17,12 +17,13 @@ GPT-4 Telegram Bot is a simple and easy-to-use conversational AI-assistant runni
 ## Environment Variables
 * `TELEGRAM_TOKEN`: Your Telegram Bot Token which can be obtained from [BotFather](https://core.telegram.org/bots#6-botfather).
 * `OPENAI_TOKEN`: Your OpenAI API Key, which can be found on the [OpenAI Dashboard](https://beta.openai.com/signup).
-
+* `OPENAI_VERSION`: OpenAI GPT version. Can be `gpt-4` or `gpt-3.5-turbo`. Full version list can be found [here](https://platform.openai.com/docs/models/overview)
 ## Usage
 1. Set your environment variables:
    ```
    export TELEGRAM_TOKEN=your_telegram_token
    export OPENAI_TOKEN=your_openai_token
+   export OPENAI_VERSION=gpt-4
    ```
 
 2. Run the script:
